@@ -3,6 +3,7 @@
 Aplikasi interaktif ini dikembangkan menggunakan **R Shiny** untuk membantu analisis, eksplorasi data, visualisasi spasial, serta peramalan produksi padi di Provinsi Jawa Barat. Aplikasi ini mendukung input data kustom (format `.csv`) dan menyediakan berbagai alat bantu statistik serta pemodelan berbasis SARIMAX.
 
 Hasil Deploy: [padi-jawabarat](https://padi-jawabarat.shinyapps.io/padi-jawabarat/) 
+Referensi: [visualisasi-data-iklim-indonesia](https://anandasatriaa.github.io/visualisasi-data-iklim-di-indonesia/distribusi.html)
 ---
 
 ## 📁 Struktur Halaman
