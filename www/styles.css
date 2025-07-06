@@ -1,0 +1,1311 @@
+/* www/styles.css - Styles untuk Aplikasi Produksi Padi Jawa Barat */
+
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #2c3e50;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  background-color: #5dade2;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: #26384a;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 90px;
+  padding: 20px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+/* Welcome Page Styles */
+/* Styling untuk Video Background Section */
+.hero-section {
+  position: relative; /* Kunci untuk menumpuk elemen di dalamnya */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Mencegah video keluar dari area */
+  margin-top: 70px;
+  color: white; /* Mengatur warna teks default menjadi putih */
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Video di lapisan paling bawah */
+}
+
+.video-background iframe {
+  width: 100vw; /* Lebar sesuai viewport */
+  height: 56.25vw; /* Tinggi dengan rasio 16:9 (9/16*100) */
+  min-width: 177.77vh; /* Kebalikan dari rasio 16:9 */
+  min-height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Mencegah interaksi dengan video */
+}
+
+/* Mengembalikan style untuk hero-content */
+.hero-content {
+  position: relative; /* Agar bisa diatur z-indexnya */
+  z-index: 3; /* Konten di lapisan paling atas */
+  text-align: center;
+  color: white;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Lapisan gelap transparan */
+  z-index: 2; /* Overlay di atas video */
+}
+
+/* PERUBAHAN FONT BERANDA */
+.hero-content h1 {
+  font-size: 4.5rem; /* Diperbesar dari 3.5rem */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* PERUBAHAN FONT BERANDA */
+.hero-content p {
+  font-size: 1.5rem; /* Diperbesar dari 1.3rem */
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.content-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* PERUBAHAN FONT BERANDA */
+.section-title {
+  font-size: 2.8rem; /* Diperbesar dari 2.5rem */
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* PERUBAHAN FONT BERANDA - TULISAN KONTEN DIPERBESAR */
+.section-content {
+  font-size: 1.4rem; /* Diperbesar dari 1.2rem */
+  line-height: 1.8; /* Ditingkatkan untuk spasi antar baris */
+  color: #555;
+  text-align: justify;
+  margin-bottom: 40px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+/* PERUBAHAN FONT BERANDA */
+.stat-number {
+  font-size: 3rem; /* Diperbesar dari 2.5rem */
+  font-weight: bold;
+  color: #3498db;
+}
+
+/* PERUBAHAN FONT BERANDA */
+.stat-label {
+  font-size: 1.2rem; /* Diperbesar dari 1.1rem */
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+.geographic-section {
+  background-color: #f8f9fa;
+  margin: 0 -20px;
+  padding: 80px 20px;
+}
+
+/* TAMBAHAN CSS BERANDA */
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.video-container {
+  margin-top: 40px;
+}
+/* Akhir Tambahan CSS */
+
+/* Theory Page Styles */
+.theory-section {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.theory-section .section-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.theory-section .section-content h3 {
+  color: #34495e;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.formula-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.formula {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin: 25px 0;
+}
+
+.highlight-box h4 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+ul.custom-list {
+  padding-left: 0;
+}
+
+ul.custom-list li {
+  list-style: none;
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+ul.custom-list li:before {
+  content: '▶';
+  color: #3498db;
+  position: absolute;
+  left: 0;
+}
+
+/* Visualization and SARIMAX Page Styles */
+.controls-panel {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-label {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.visualization-container, .content-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.viz-tabs, .tab-navigation {
+  display: flex;
+  background-color: #34495e;
+}
+
+.viz-tab, .tab-btn {
+  flex: 1;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  background: none;
+  font-size: 14px;
+}
+
+.viz-tab:hover, .tab-btn:hover {
+  background-color: #4a6c8e;
+}
+
+.viz-tab.active, .tab-btn.active {
+  background-color: #3498db;
+}
+
+.viz-content, .tab-content {
+  padding: 20px;
+  min-height: 600px;
+}
+
+.summary-stats, .statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid #3498db;
+}
+
+.stat-value {
+  font-size: 2.5rem; /* DIPERBESAR dari 1.5rem ke 2.5rem */
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.stat-box .stat-label {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* PERBAIKAN MASALAH 2: Styling untuk optimized chart dan loading */
+#chart-loading {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.chart-optimized-container {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: opacity 0.3s ease;
+}
+
+/* Drag and Drop Styles for Exploration Data */
+.variable-bank {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #dee2e6;
+  margin-bottom: 20px;
+}
+
+.variable-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 60px;
+}
+
+.variable-item {
+  background: white;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: grab;
+  user-select: none;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.variable-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.variable-item.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.variable-numeric {
+  border-color: #3498db;
+}
+
+.variable-categorical {
+  border-color: #f39c12;
+}
+
+.variable-name {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.variable-type {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.drop-zone {
+  background: #f8f9fa;
+  border: 3px dashed #dee2e6;
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  min-height: 120px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.drop-zone.drag-over {
+  border-color: #3498db;
+  background-color: #e3f2fd;
+  transform: scale(1.02);
+}
+
+.drop-zone h5 {
+  margin-bottom: 10px;
+}
+
+.dropped-variable {
+  background: white;
+  border: 2px solid #27ae60;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dropped-variable span {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.remove-var {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-var:hover {
+  background: #c0392b;
+}
+
+/* Exploration Tabs Styles */
+.exploration-tabs {
+  display: flex;
+  background-color: #2c3e50;
+  border-radius: 10px 10px 0 0;
+}
+
+.exploration-tab {
+  flex: 1;
+  padding: 15px 10px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px 10px 0 0;
+}
+
+.exploration-tab:hover {
+  background-color: #34495e;
+}
+
+.exploration-tab.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.tab-content-exploration {
+  background: white;
+  border-radius: 0 0 10px 10px;
+  min-height: 500px;
+}
+
+/* PERBAIKAN MASALAH 1: Styling khusus untuk tab "Dependen Saja" */
+.exploration-tab[id*="dependent-only"] {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.exploration-tab.active[id*="dependent-only"] {
+  background: #e74c3c;
+}
+
+/* Analysis Result Styles */
+.analysis-result {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.analysis-result h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+/* SARIMAX specific styles */
+.input-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.input-section h4 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.file-upload-area {
+  border: 2px dashed #3498db;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  background: white;
+  margin: 15px 0;
+  transition: border-color 0.3s;
+}
+
+.file-upload-area:hover {
+  border-color: #2980b9;
+}
+
+.upload-text {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+.data-preview {
+  margin-top: 20px;
+}
+
+.test-result {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.test-result h4 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.result-pass {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.result-fail {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.forecast-summary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.forecast-summary h3 {
+  margin-bottom: 15px;
+}
+
+.trend-indicator {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.model-params {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+/* =============================================== */
+/* CLUSTERING PAGE SPECIFIC STYLES - DIPERBAIKI */
+/* =============================================== */
+
+/* Clustering Controls Panel */
+.clustering-controls {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.clustering-controls h4 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.clustering-controls .form-group label {
+  color: white;
+  font-weight: 500;
+}
+
+/* Variable Selection for Clustering */
+.clustering-variables {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #27ae60;
+  margin-bottom: 15px;
+}
+
+.clustering-variables h5 {
+  color: #27ae60;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.clustering-variables .checkbox {
+  margin-bottom: 8px;
+}
+
+.clustering-variables input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+.clustering-variables label {
+  color: #2c3e50;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Clustering Results Summary */
+.cluster-summary {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.cluster-summary h4 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.cluster-summary p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* Cluster Information Panel */
+.cluster-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #27ae60;
+  margin-top: 20px;
+}
+
+.cluster-info h4 {
+  color: #27ae60;
+  margin-bottom: 15px;
+}
+
+/* Elbow Plot Specific Styles */
+.elbow-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.elbow-container h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #27ae60;
+  padding-bottom: 10px;
+}
+
+/* CLUSTERING TAB COLORS - DISERAGAMKAN MENJADI BIRU */
+/* Default state - all blue */
+.viz-tab[id*="elbow"],
+.viz-tab[id*="scatter-cluster"],
+.viz-tab[id*="boxplot-cluster"],
+.viz-tab[id*="map-cluster"] {
+  background-color: #2980b9; /* Biru standar */
+}
+
+/* Hover state - slightly lighter blue */
+.viz-tab[id*="elbow"]:hover,
+.viz-tab[id*="scatter-cluster"]:hover,
+.viz-tab[id*="boxplot-cluster"]:hover,
+.viz-tab[id*="map-cluster"]:hover {
+  background-color: #3498db; /* Biru sedikit lebih terang */
+}
+
+/* Active state - light blue */
+.viz-tab.active[id*="elbow"],
+.viz-tab.active[id*="scatter-cluster"],
+.viz-tab.active[id*="boxplot-cluster"],
+.viz-tab.active[id*="map-cluster"] {
+  background-color: #5dade2; /* Biru muda untuk yang aktif */
+}
+
+/* Clustering Statistics Grid */
+.clustering-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.clustering-stat-box {
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.clustering-stat-box:hover {
+  transform: translateY(-3px);
+}
+
+.clustering-stat-value {
+  font-size: 2.5rem; /* DIPERBESAR dari 2rem ke 2.5rem */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.clustering-stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Centroids Table Styling */
+.centroids-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.centroids-table .dataTables_wrapper {
+  padding: 15px;
+}
+
+.centroids-table table {
+  font-size: 14px;
+}
+
+.centroids-table th {
+  background-color: #27ae60;
+  color: white;
+  font-weight: bold;
+}
+
+.centroids-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.gede {
+  font-size:20px;
+}
+
+p {
+  font-size: 20px !important;
+}
+
+/* Enhanced Button Styles for Clustering */
+.btn-analyze {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-analyze:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-analyze:active {
+  transform: translateY(1px);
+}
+
+/* Special styling for clustering run button */
+.btn-analyze[style*="background-color: #27ae60"] {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  font-weight: bold;
+  font-size: 18px;
+  padding: 15px 30px;
+}
+
+.btn-analyze[style*="background-color: #27ae60"]:hover {
+  background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+/* Clustering Map Specific Styles */
+.clustering-map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.clustering-map-legend {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Loading States for Clustering */
+.clustering-loading {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+}
+
+.clustering-loading .spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #27ae60;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Clustering Success States */
+.clustering-success {
+  background: linear-gradient(135deg, #d5f4e6 0%, #c8e6c9 100%);
+  border: 1px solid #27ae60;
+  color: #1b5e20;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.clustering-success strong {
+  color: #27ae60;
+}
+
+/* Notice styles */
+.notice {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #6c757d;
+  margin: 20px 0;
+}
+
+.notice p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Correlation analysis styles */
+.correlation-analysis {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.correlation-analysis h4 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* Button grouping for exploration tabs */
+.controls-panel .btn-analyze {
+  margin: 5px 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.controls-panel .btn-analyze:hover {
+  background-color: #2980b9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Specific styles for different exploration tabs */
+.exploration-tab[id*="independent-dependent"] {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.exploration-tab[id*="independent-categorical"] {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.exploration-tab.active[id*="independent-dependent"] {
+  background: #3498db;
+}
+
+.exploration-tab.active[id*="independent-categorical"] {
+  background: #f39c12;
+}
+
+/* Enhanced analysis results */
+.analysis-result {
+  border-left: 4px solid #3498db;
+  margin-bottom: 25px;
+  transition: box-shadow 0.3s ease;
+}
+
+.analysis-result:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Loading and transition effects */
+.analysis-result {
+  animation: slideInUp 0.5s ease-in-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .nav-links {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-content {
+    padding: 10px;
+  }
+  
+  .variable-container {
+    flex-direction: column;
+  }
+  
+  .variable-item {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .drop-zone {
+    margin-bottom: 15px;
+    padding: 20px 15px;
+    min-height: 100px;
+  }
+  
+  .btn-analyze {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .viz-tabs, .tab-navigation, .exploration-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .viz-tab, .tab-btn, .exploration-tab {
+    flex: 1 1 auto;
+    min-width: 120px;
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+  
+  .exploration-tabs {
+    flex-direction: column;
+  }
+  
+  .exploration-tab {
+    border-radius: 0;
+  }
+  
+  .exploration-tab:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .tab-content-exploration {
+    border-radius: 0 0 10px 10px;
+  }
+  
+  /* Clustering responsive styles */
+  .clustering-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .clustering-variables {
+    padding: 15px;
+  }
+  
+  .cluster-summary {
+    padding: 15px;
+  }
+  
+  .cluster-info {
+    padding: 15px;
+  }
+  
+  /* Responsive stat values - tetap besar di mobile */
+  .stat-value,
+  .clustering-stat-value {
+    font-size: 2rem; /* Sedikit dikurangi untuk mobile tapi tetap besar */
+  }
+  
+  /* PERBAIKAN MASALAH 2: Responsive untuk chart loading */
+  #chart-loading {
+    padding: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  .variable-bank {
+    padding: 15px;
+  }
+  
+  .drop-zone {
+    padding: 15px 10px;
+    min-height: 80px;
+  }
+  
+  .drop-zone h5 {
+    font-size: 1rem;
+  }
+  
+  .controls-panel {
+    padding: 15px;
+  }
+  
+  .analysis-result {
+    padding: 15px;
+  }
+  
+  .exploration-tab {
+    font-size: 11px;
+    padding: 8px 5px;
+  }
+  
+  /* Clustering mobile styles */
+  .clustering-stat-value {
+    font-size: 1.8rem; /* Tetap cukup besar di mobile kecil */
+  }
+  
+  .clustering-stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .btn-analyze[style*="background-color: #27ae60"] {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+  
+  /* Stat values responsive - minimum size */
+  .stat-value {
+    font-size: 1.8rem; /* Minimum size tapi tetap besar */
+  }
+  
+  /* PERBAIKAN MASALAH 2: Mobile loading chart */
+  #chart-loading {
+    padding: 15px;
+    font-size: 13px;
+  }
+}
+
+/* Additional utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+/* Enhanced hover effects */
+.variable-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.dropped-variable {
+  animation: dropIn 0.3s ease-in-out;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+/* Enhanced focus states for accessibility */
+.btn-analyze:focus,
+.nav-link:focus,
+.viz-tab:focus,
+.tab-btn:focus,
+.exploration-tab:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .controls-panel,
+  .viz-tabs,
+  .tab-navigation,
+  .exploration-tabs {
+    display: none;
+  }
+  
+  .main-content {
+    margin-top: 0;
+  }
+  
+  .visualization-container,
+  .content-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
