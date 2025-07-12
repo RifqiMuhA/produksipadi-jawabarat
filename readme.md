@@ -17,7 +17,8 @@ Menampilkan ringkasan kondisi geografis Provinsi Jawa Barat dan statistik umum p
 Berisi:
 - **Landasan teori** terkait produksi padi dan metode peramalan time series, terutama **SARIMAX (Seasonal ARIMA with eXogenous variables)**.
 - **Panduan pengguna** untuk membantu navigasi dan penggunaan fitur aplikasi.
-
+- **Metadata** data yang digunakan serta sumber data 
+- **Data** yang bisa didownload untuk bahan analisis
 ---
 
 ### 3. Visualisasi Data
