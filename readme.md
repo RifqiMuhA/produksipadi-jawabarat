@@ -1,4 +1,4 @@
-# 📊 Aplikasi Analisis & Peramalan Produksi Padi Jawa Barat
+# Aplikasi Analisis & Peramalan Produksi Padi Jawa Barat
 
 Aplikasi interaktif ini dikembangkan menggunakan **R Shiny** untuk membantu analisis, eksplorasi data, visualisasi spasial, serta peramalan produksi padi di Provinsi Jawa Barat. Aplikasi ini mendukung input data kustom (format `.csv`) dan menyediakan berbagai alat bantu statistik serta pemodelan berbasis SARIMAX.
 
@@ -6,21 +6,21 @@ Hasil Deploy: [padi-jawabarat](https://padi-jawabarat.shinyapps.io/padi-jawabara
 Referensi: [visualisasi-data-iklim-indonesia](https://anandasatriaa.github.io/visualisasi-data-iklim-di-indonesia/distribusi.html)
 ---
 
-## 📁 Struktur Halaman
+## Struktur Halaman
 
-### 1. 🏠 Beranda
+### 1. Beranda
 Menampilkan ringkasan kondisi geografis Provinsi Jawa Barat dan statistik umum produksi padi. Halaman ini menjadi pengantar utama penggunaan aplikasi.
 
 ---
 
-### 2. 📚 Teori & User Guide
+### 2. Teori & User Guide
 Berisi:
 - **Landasan teori** terkait produksi padi dan metode peramalan time series, terutama **SARIMAX (Seasonal ARIMA with eXogenous variables)**.
 - **Panduan pengguna** untuk membantu navigasi dan penggunaan fitur aplikasi.
 
 ---
 
-### 3. 🌍 Visualisasi Data
+### 3. Visualisasi Data
 
 Pengguna dapat mengunggah file `.csv` atau menggunakan data contoh.
 
@@ -41,7 +41,7 @@ Menampilkan:
 
 ---
 
-### 4. 🔎 Eksplorasi Data
+### 4. Eksplorasi Data
 
 Fitur drag-and-drop untuk mengelompokkan variabel ke:
 - **Variabel Dependen**
@@ -72,7 +72,7 @@ Data bisa diunggah atau menggunakan contoh bawaan.
 
 ---
 
-### 5. 🧪 Clustering
+### 5. Clustering
 
 Pengguna dapat:
 - Unggah file `.csv` atau gunakan data contoh.
@@ -87,7 +87,7 @@ Pengguna dapat:
 
 ---
 
-### 6. 📈 Forecasting (Peramalan)
+### 6. Forecasting (Peramalan)
 
 Fokus pada model **SARIMAX** dengan variabel eksogen seperti:
 - Curah Hujan
@@ -117,13 +117,13 @@ Fokus pada model **SARIMAX** dengan variabel eksogen seperti:
 
 ---
 
-## 📂 Format File CSV
+## Format File CSV
 
 Pastikan file memiliki format dan struktur kolom yang sesuai dengan contoh data yang telah disediakan.
 
 ---
 
-## 🔧 Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 - R Shiny
 - ggplot2, plotly
@@ -135,20 +135,17 @@ Pastikan file memiliki format dan struktur kolom yang sesuai dengan contoh data 
 
 ---
 
-## 📌 Catatan
+## Catatan
 
 - Direkomendasikan untuk menggunakan browser desktop (Chrome/Firefox).
 - Jika terjadi error saat unggah file, periksa format dan kolom file `.csv` Anda.
 
 ---
 
-## 👥 Kontributor
-- Rifqi Muhadzib Ahdan – [Pengembang UI/UX, Backend dan Visualisasi](mailto:email@domain.com)
-- [Tim Anda lainnya]
+## Kontributor
+- Rifqi Muhadzib Ahdan – 222313350
+- Seto Haidar Yudhistira – 222313375
+- Zidan Septian – 222313447
 
 ---
-
-## 📄 Lisensi
-
-MIT License
 

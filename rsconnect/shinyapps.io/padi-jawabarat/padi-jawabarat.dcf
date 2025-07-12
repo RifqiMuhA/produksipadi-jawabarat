@@ -1,0 +1,10 @@
+name: padi-jawabarat
+title:
+username: padi-jawabarat
+account: padi-jawabarat
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15037430
+bundleId: 10603728
+url: https://padi-jawabarat.shinyapps.io/padi-jawabarat/
+version: 1

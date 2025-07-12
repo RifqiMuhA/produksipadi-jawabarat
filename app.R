@@ -221,7 +221,10 @@ ui <- fluidPage(
                       tags$div(class = "video-overlay"),
                       tags$div(class = "hero-content",
                                tags$h1("PRODUKSI PADI DI JAWA BARAT"),
-                               tags$p("Analisis Spasial dan Peramalan Produksi", style="font-size:20px;"),
+                               tags$p(
+                                 "Dashboard yang dirancang untuk memvisualisasikan peta, melakukan eksplorasi data secara interaktif, serta menerapkan analisis clustering dan peramalan (forecasting) terhadap data produksi padi di Jawa Barat.",
+                                 style = "font-size:20px; padding: 0 10rem;"
+                               ),
                                tags$div(
                                  style = "margin-top: 40px;",
                                  tags$button(
@@ -266,7 +269,7 @@ ui <- fluidPage(
                                  tags$iframe(
                                    width = "896", 
                                    height = "504", 
-                                   src = "https://www.youtube.com/embed/qH1jph2ldSg?si=8IbSuHPO6lDTAZlO", # URL Embed video YouTube
+                                   src = "https://www.youtube.com/embed/wb3TyZKxm6U?si=fzGYEbkNeC8JPpDb", # URL Embed video YouTube
                                    title = "YouTube video player", 
                                    frameborder = "0", 
                                    allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", 
@@ -301,6 +304,15 @@ ui <- fluidPage(
                                  
                                  tags$iframe(style="height:800px; width:100%; border:none;", src="userguide.pdf")
                         )
+               ),
+               tabPanel("Metadata",
+                        tags$div(class = "pdf-container",
+                                 tags$h3("Metadata Data Contoh", style="text-align:center; margin-top:20px;"),
+                                 tags$p("Data yang menggunakan sumber asli dan kredibel hanya bagian visualisasi peta dan forecasting. Sedangkan eksplorasi data dan clustering menggunakan data dummy untuk tujuan demonstrasi saja"
+                                        , style="text-align:center; margin-top:20px;"),
+                                 
+                                 tags$iframe(style="height:800px; width:100%; border:none;", src="metadata.pdf")
+                        )
                )
              ),
              
@@ -310,10 +322,10 @@ ui <- fluidPage(
                       tags$p("Gunakan template berikut untuk memastikan format data Anda sesuai dengan yang dibutuhkan oleh aplikasi pada setiap menu.", style="text-align:center; font-size: 20px !important;"),
                       br(),
                       fluidRow(
-                        column(3, downloadButton("downloadVisualisasiTemplate", "Template Visualisasi", class="btn-analyze", style="width:100%; font-size: 14px;")),
+                        column(3, downloadButton("downloadVisualisasiTemplate", "Data Visualisasi (OpenData Jabar)", class="btn-analyze", style="width:100%; font-size: 14px;")),
                         column(3, downloadButton("downloadEksplorasiTemplate", "Template Eksplorasi", class="btn-analyze", style="width:100%; font-size: 14px;")),
                         column(3, downloadButton("downloadClusteringTemplate", "Template Clustering", class="btn-analyze", style="width:100%; font-size: 14px;")),
-                        column(3, downloadButton("downloadForecastTemplate", "Template Forecast", class="btn-analyze", style="width:100%; font-size: 14px;"))
+                        column(3, downloadButton("downloadForecastTemplate", "Data Forecast (GEE)", class="btn-analyze", style="width:100%; font-size: 14px;"))
                       )
              )
              # --- AKHIR PENAMBAHAN FITUR ---
@@ -758,7 +770,12 @@ ui <- fluidPage(
                                                      verbatimTextOutput("autocorrelationTest"),
                                                      uiOutput("autocorrelationInterpretation")
                                             ),
-                                            plotlyOutput("residualPlots", height = "400px")
+                                            plotlyOutput("residualPlots", height = "400px"),
+                                            tags$div(class = "assumption-summary", 
+                                                     style = "margin-top: 20px; padding: 15px; border-radius: 5px;",
+                                                     tags$h4("Kesimpulan Keseluruhan Uji Asumsi", style = "margin-bottom: 15px;"),
+                                                     uiOutput("overallAssumptionResult")
+                                            )
                                    )
                                  ),
                                  conditionalPanel(
@@ -884,10 +901,8 @@ server <- function(input, output, session) {
     }
   })
   
-  ### PERUBAHAN: Logika Server untuk Grafik Baru di Halaman Beranda
   # Memuat dan memproses Data_Visualisasi.csv
   tryCatch({
-    # Membaca data, memastikan nama kolom tidak diubah (check.names = FALSE)
     data_vis <- read.csv("www/Data_Visualisasi.csv", stringsAsFactors = FALSE, check.names = FALSE)
     
     # Kolom tahun yang akan diproses
@@ -931,50 +946,50 @@ server <- function(input, output, session) {
              yaxis = list(title = "Rata-Rata Produksi (Ton)"))
   })
   
-  # --- PENAMBAHAN LOGIKA SERVER UNTUK DOWNLOAD TEMPLATE ---
+  # --- LOGIKA SERVER UNTUK DOWNLOAD TEMPLATE ---
   output$downloadVisualisasiTemplate <- downloadHandler(
     filename = function() {
-      "Template_Data_Visualisasi.csv"
+      "Data_Visualisasi.csv"
     },
     content = function(file) {
-      file.copy("www/Template_Data_Visualisasi.csv", file)
+      file.copy("www/Data_Visualisasi.csv", file)
     },
     contentType = "text/csv"
   )
   
   output$downloadEksplorasiTemplate <- downloadHandler(
     filename = function() {
-      "Template_Data_Eksplorasi.csv"
+      "Data_Eksplorasi.csv"
     },
     content = function(file) {
-      file.copy("www/Template_Data_Eksplorasi.csv", file)
+      file.copy("www/Data_Eksplorasi.csv", file)
     },
     contentType = "text/csv"
   )
   
   output$downloadClusteringTemplate <- downloadHandler(
     filename = function() {
-      "Template_Data_Clustering.csv"
+      "Data_Clustering.csv"
     },
     content = function(file) {
-      file.copy("www/Template_Data_Clustering.csv", file)
+      file.copy("www/Data_Clustering.csv", file)
     },
     contentType = "text/csv"
   )
   
   output$downloadForecastTemplate <- downloadHandler(
     filename = function() {
-      "Template_Data_Forecast.csv"
+      "Data_Forecast.csv"
     },
     content = function(file) {
-      file.copy("www/Template_Data_Forecast.csv", file)
+      file.copy("www/Data_Forecast.csv", file)
     },
     contentType = "text/csv"
   )
   # --- AKHIR PENAMBAHAN LOGIKA SERVER ---
   
   
-  # --- Logika untuk Halaman Visualisasi Peta (dengan perbaikan grafik) ---
+  # --- Logika untuk Halaman Visualisasi Peta ---
   observeEvent(input$mapDataFile, {
     req(input$mapDataFile)
     tryCatch({
@@ -1157,7 +1172,6 @@ server <- function(input, output, session) {
     }
   })
   
-  # PERBAIKAN MASALAH 2: Grafik perbandingan dioptimasi dan diganti dengan ggplot + base R rendering
   output$comparison_chart_optimized <- renderPlot({
     req(filtered_data())
     data <- filtered_data()
@@ -1181,7 +1195,6 @@ server <- function(input, output, session) {
         arrange(desc(Produksi_Padi)) %>%
         slice_head(n = 15)  # Hanya ambil 15 teratas untuk performa
       
-      # Menggunakan ggplot2 sederhana tanpa plotly untuk performa lebih baik
       p <- ggplot(data_to_plot, aes(x = reorder(Kabupaten, Produksi_Padi), y = Produksi_Padi)) +
         geom_col(fill = '#3498db', alpha = 0.8) +
         coord_flip() +
@@ -1192,7 +1205,7 @@ server <- function(input, output, session) {
           axis.title = element_text(size = 12)
         ) +
         labs(
-          title = "Perbandingan Produksi Padi per Daerah (Top 15)",
+          title = "Perbandingan Produksi Padi per Daerah",
           x = "Kabupaten/Kota", 
           y = "Produksi Padi (ton)"
         ) +
@@ -1211,7 +1224,6 @@ server <- function(input, output, session) {
         arrange(desc(abs(Perubahan))) %>%
         slice_head(n = 15)  # Hanya ambil 15 dengan perubahan terbesar
       
-      # Menggunakan ggplot2 sederhana untuk performa lebih baik
       p <- ggplot(data_to_plot, aes(x = reorder(Kabupaten, Perubahan), y = Perubahan, fill = Status)) +
         geom_col(alpha = 0.8) +
         coord_flip() +
@@ -1224,7 +1236,7 @@ server <- function(input, output, session) {
           legend.position = "bottom"
         ) +
         labs(
-          title = "Perubahan Produksi Padi Dibandingkan Tahun Sebelumnya (Top 15)",
+          title = "Perubahan Produksi Padi Dibandingkan Tahun Sebelumnya",
           x = "Kabupaten/Kota", 
           y = "Perubahan Produksi (ton)",
           fill = "Status"
@@ -1235,7 +1247,6 @@ server <- function(input, output, session) {
     }
   })
   
-  # Hide loading message when chart tab is selected
   observe({
     if(!is.null(input$viz_tab) && input$viz_tab == "chart") {
       shinyjs::hide("chart-loading")
@@ -1267,7 +1278,7 @@ server <- function(input, output, session) {
   })
   
   #=============================================================================
-  # --- Halaman Eksplorasi Data (DENGAN PERBAIKAN TAB PERTAMA) ---
+  # --- Halaman Eksplorasi Data ---
   #=============================================================================
   
   exploration_values <- reactiveValues(
@@ -1400,7 +1411,7 @@ server <- function(input, output, session) {
   outputOptions(output, "hasCategoricalVar", suspendWhenHidden = FALSE)
   
   # ===========================================================================
-  # TAB 1: EKSPLORASI DEPENDEN SAJA (BARU - MENGGANTI INDEPENDEN SAJA)
+  # TAB 1: EKSPLORASI DEPENDEN SAJA
   # ===========================================================================
   
   # Button observers untuk TAB 1 (DEPENDEN SAJA)
@@ -1546,7 +1557,7 @@ server <- function(input, output, session) {
   })
   
   # ===========================================================================
-  # TAB 2: EKSPLORASI INDEPENDEN + DEPENDEN (tidak berubah)
+  # TAB 2: EKSPLORASI INDEPENDEN + DEPENDEN
   # ===========================================================================
   
   # Button observers for tab 2
@@ -1748,7 +1759,7 @@ server <- function(input, output, session) {
   })
   
   # ===========================================================================
-  # TAB 3: EKSPLORASI INDEPENDEN + KATEGORIK (tidak berubah)
+  # TAB 3: EKSPLORASI INDEPENDEN + KATEGORIK 
   # ===========================================================================
   
   # Button observers for tab 3
@@ -1937,7 +1948,7 @@ server <- function(input, output, session) {
   })
   
   #=============================================================================
-  # --- Halaman Clustering (tidak berubah) ---
+  # --- Halaman Clustering ---
   #=============================================================================
   
   clustering_values <- reactiveValues(
@@ -2319,10 +2330,16 @@ server <- function(input, output, session) {
   })
   
   #=============================================================================
-  # --- Halaman Forecasting (tidak diubah) ---
+  # --- Halaman Forecasting ---
   #=============================================================================
   
   values_fc <- reactiveValues(data = NULL, ts_data = NULL, model_full = NULL, model_selective = NULL, forecast_result = NULL, assumptions_tested = FALSE, comparison_complete = FALSE, external_vars = NULL, correlation_matrix = NULL, current_test_model = NULL, current_model_type = NULL, last_run_model = NULL)
+  
+  assumption_results <- reactiveValues(
+    adf_passed = NULL,
+    normality_passed = NULL,
+    autocorr_passed = NULL
+  )
   
   observeEvent(input$loadSampleData, {
     data <- sample_sarimax_data
@@ -2509,6 +2526,9 @@ server <- function(input, output, session) {
     adf_result <- adf.test(residuals(assumption_model()))
     alpha <- 0.05
     
+    # Simpan hasil uji
+    assumption_results$adf_passed <- adf_result$p.value < alpha
+    
     if (adf_result$p.value < alpha) {
       tags$p(HTML(sprintf("<strong>Kesimpulan:</strong> P-value (%.4f) lebih kecil dari alpha (%.2f), maka H0 ditolak. Data residual <strong>stasioner</strong>.", adf_result$p.value, alpha)))
     } else {
@@ -2520,6 +2540,9 @@ server <- function(input, output, session) {
     req(assumption_model())
     norm_result <- shapiro.test(residuals(assumption_model()))
     alpha <- 0.05
+    
+    # Simpan hasil uji
+    assumption_results$normality_passed <- norm_result$p.value >= alpha
     
     if (norm_result$p.value < alpha) {
       tags$p(HTML(sprintf("<strong>Kesimpulan:</strong> P-value (%.4f) lebih kecil dari alpha (%.2f), maka H0 ditolak. Data residual <strong>tidak terdistribusi normal</strong>.", norm_result$p.value, alpha)))
@@ -2533,11 +2556,81 @@ server <- function(input, output, session) {
     ljung_result <- Box.test(residuals(assumption_model()), lag = 10, type = "Ljung-Box")
     alpha <- 0.05
     
+    # Simpan hasil uji
+    assumption_results$autocorr_passed <- ljung_result$p.value >= alpha
+    
     if (ljung_result$p.value < alpha) {
       tags$p(HTML(sprintf("<strong>Kesimpulan:</strong> P-value (%.4f) lebih kecil dari alpha (%.2f), maka H0 ditolak. Terdapat <strong>autokorelasi</strong> pada data residual.", ljung_result$p.value, alpha)))
     } else {
       tags$p(HTML(sprintf("<strong>Kesimpulan:</strong> P-value (%.4f) lebih besar dari alpha (%.2f), maka H0 gagal ditolak. <strong>Tidak ada autokorelasi</strong> pada data residual.", ljung_result$p.value, alpha)))
     }
+  })
+  
+  output$overallAssumptionResult <- renderUI({
+    # Pastikan model ada
+    if(is.null(assumption_model())) return(NULL)
+    
+    tryCatch({
+      # Hitung ulang semua uji disini untuk memastikan ada hasilnya
+      adf_result <- adf.test(residuals(assumption_model()))
+      norm_result <- shapiro.test(residuals(assumption_model()))
+      ljung_result <- Box.test(residuals(assumption_model()), lag = 10, type = "Ljung-Box")
+      
+      alpha <- 0.05
+      
+      # Tentukan hasil setiap uji
+      adf_passed <- adf_result$p.value < alpha  # Stasioner jika p < alpha
+      normal_passed <- norm_result$p.value >= alpha  # Normal jika p >= alpha  
+      autocorr_passed <- ljung_result$p.value >= alpha  # Tidak ada autokorelasi jika p >= alpha
+      
+      # Daftar uji yang gagal
+      failed_tests <- c()
+      if (!adf_passed) failed_tests <- c(failed_tests, "Stasioneritas (ADF)")
+      if (!normal_passed) failed_tests <- c(failed_tests, "Normalitas (Shapiro-Wilk)")
+      if (!autocorr_passed) failed_tests <- c(failed_tests, "Autokorelasi (Ljung-Box)")
+      
+      if (length(failed_tests) > 0) {
+        # Ada uji yang gagal - tampilkan pesan merah
+        failed_text <- paste(failed_tests, collapse = ", ")
+        tags$div(
+          style = "background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 12px; border-radius: 4px;",
+          tags$div(
+            style = "display: flex; align-items: center;",
+            tags$span("⚠️", style = "font-size: 20px; margin-right: 8px;"),
+            tags$strong("PERINGATAN: Asumsi Model Tidak Terpenuhi!")
+          ),
+          tags$p(
+            style = "margin: 8px 0 0 0;",
+            HTML(sprintf(
+              "Uji yang <strong>gagal</strong>: %s.<br/>
+            Secara teori, forecasting <strong>tidak dapat dilakukan</strong> dengan optimal karena melanggar asumsi model SARIMAX. 
+            Disarankan untuk melakukan transformasi data atau penyesuaian parameter model.",
+              failed_text
+            ))
+          )
+        )
+      } else {
+        # Semua uji berhasil - tampilkan pesan hijau
+        tags$div(
+          style = "background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 12px; border-radius: 4px;",
+          tags$div(
+            style = "display: flex; align-items: center;",
+            tags$span("✅", style = "font-size: 20px; margin-right: 8px;"),
+            tags$strong("SUKSES: Semua Asumsi Model Terpenuhi!")
+          ),
+          tags$p(
+            style = "margin: 8px 0 0 0;",
+            HTML("Uji Stasioneritas, Normalitas, dan Autokorelasi semuanya <strong>berhasil</strong>. 
+               Model SARIMAX memenuhi asumsi dan forecasting dapat dilakukan dengan optimal.")
+          )
+        )
+      }
+    }, error = function(e) {
+      tags$div(
+        style = "background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 12px; border-radius: 4px;",
+        tags$p("Sedang memproses uji asumsi... Silakan tunggu.")
+      )
+    })
   })
   
   observeEvent(input$runForecast, {
@@ -2617,6 +2710,8 @@ server <- function(input, output, session) {
     req(values_fc$last_run_model)
     summary(values_fc$last_run_model)
   })
+  
+  
 }
 
 # ===================================================================
